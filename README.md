@@ -7,7 +7,7 @@ NFS é um protocolo cliente / servidor de plataforma cruzada que permite que má
 Para começar, instalaremos o pacote do servidor NFS chamado nfs-utils que atua como o daemon NFS. Para instalar o pacote nfs-utils, inicie o terminal e execute o comando:
 
 ```console
-$ sudo dnf install nfs-utils -y
+sudo dnf install nfs-utils -y
 ```
 Quando a instalação estiver concluída, inicie e habilite o serviço nfs-server para que ele seja feito automaticamente durante as reinicializações. Execute os seguintes comandos:
 
