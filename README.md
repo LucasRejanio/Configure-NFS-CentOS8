@@ -122,7 +122,7 @@ Para tornar o compartilhamento de montagem persistente após uma reinicializaç�
 ```
 SERVER-IP:/mnt/nfs_shares/ /mnt/client_share nfs defaults 0 0
 ```
-```php
+```properties
 #
 # /etc/fstab
 # Created by anaconda on Thu Apr 23 05:12:32 2020
