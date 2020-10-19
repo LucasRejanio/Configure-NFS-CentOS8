@@ -1,0 +1,1 @@
+/mnt/nfs_shares/ *(rw,insecure,no_root_squash,no_subtree_check,sec=sys,no_all_squash)
