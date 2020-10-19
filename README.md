@@ -119,7 +119,7 @@ sudo mount | grep -i nfs
 
 Para tornar o compartilhamento de montagem persistente após uma reinicialização, você precisa editar o arquivo /etc/fstab e anexar a entrada abaixo.
 
-```properties
+```php
 SERVER-IP:/mnt/nfs_shares/ /mnt/client_share nfs defaults 0 0
 ```
 ```properties
