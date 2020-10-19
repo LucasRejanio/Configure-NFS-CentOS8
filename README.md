@@ -119,7 +119,7 @@ sudo mount | grep -i nfs
 
 Para tornar o compartilhamento de montagem persistente após uma reinicialização, você precisa editar o arquivo /etc/fstab e anexar a entrada abaixo.
 
-```php
+```properties
 SERVER-IP:/mnt/nfs_shares/ /mnt/client_share nfs defaults 0 0
 ```
 ```properties
@@ -141,12 +141,12 @@ SERVER-IP:/mnt/nfs_shares/  /mnt/client_share       nfs     defaults        0 0
 
 Neste ponto, concluímos todas as configurações. No entanto, precisamos testar nossa configuração e garantir que tudo funcione. Portanto, primeiro, vamos criar um arquivo de teste no diretório de compartilhamento do servidor NFS e verificar se ele está presente no diretório NFS montado do cliente.
 
-NodeV01
+- NodeV01
 ```console
 sudo touch /mnt/nfs_shares/server_nfs_file.txt
 ```
 
-NodeV02
+- NodeV02
 ```console
 ls -l /mnt/client_share
 ```
@@ -154,7 +154,13 @@ ls -l /mnt/client_share
 sudo touch /mnt/client_share/client_nfs_file.txt
 ```
 
-NodeV01
+- NodeV01
 ```console
 ls -l /mnt/nfs_shares
 ```
+# Conclusão:
+- [x] Instalaçao e configuração do NFS no servidor CentOS 8 / RHEL 8
+- [x] Criação e exportação de compartilhamento NFS
+- [x] Instação dos pacotes NFS necessários no servidor do client
+- [x] Montagem do compartilhamento NFS remoto localizado no servidor
+- [x] Teste de configuração
