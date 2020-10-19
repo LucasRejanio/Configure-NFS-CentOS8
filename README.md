@@ -56,7 +56,7 @@ sudo systemctl restart nfs-utils.service
 Para exportar o compartilhamento NFS para que os sistemas cliente possam acessá-lo, precisamos editar o arquivo /etc/exports. </br>
 
 Exemplos: 
-```
+```properties
 /mnt/nfs_shares CLIENT-IP:(rw,sync,no_all_squash,root_squash)
 /mnt/nfs_shares *(rw,sync,no_all_squash,root_squash)
 ```
@@ -119,7 +119,7 @@ sudo mount | grep -i nfs
 
 Para tornar o compartilhamento de montagem persistente após uma reinicialização, você precisa editar o arquivo /etc/fstab e anexar a entrada abaixo.
 
-```
+```properties
 SERVER-IP:/mnt/nfs_shares/ /mnt/client_share nfs defaults 0 0
 ```
 ```properties
@@ -137,12 +137,12 @@ UUID=3510a17e-27dc-4ae2-9243-d600c16f4106 /                       xfs     defaul
 SERVER-IP:/mnt/nfs_shares/  /mnt/client_share       nfs     defaults        0 0
 ```
 
-## Testando a configuração do servidor e do cliente NFS
+# Testando a configuração do servidor e do cliente NFS
 
 Neste ponto, concluímos todas as configurações. No entanto, precisamos testar nossa configuração e garantir que tudo funcione. Portanto, primeiro, vamos criar um arquivo de teste no diretório de compartilhamento do servidor NFS e verificar se ele está presente no diretório NFS montado do cliente.
 
 NodeV01
-```bat
+```console
 sudo touch /mnt/nfs_shares/server_nfs_file.txt
 ```
 
