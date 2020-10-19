@@ -141,12 +141,12 @@ SERVER-IP:/mnt/nfs_shares/  /mnt/client_share       nfs     defaults        0 0
 
 Neste ponto, concluímos todas as configurações. No entanto, precisamos testar nossa configuração e garantir que tudo funcione. Portanto, primeiro, vamos criar um arquivo de teste no diretório de compartilhamento do servidor NFS e verificar se ele está presente no diretório NFS montado do cliente.
 
-- NodeV01
+- **NodeV01**
 ```console
 sudo touch /mnt/nfs_shares/server_nfs_file.txt
 ```
 
-- NodeV02
+- **NodeV02**
 ```console
 ls -l /mnt/client_share
 ```
@@ -154,7 +154,7 @@ ls -l /mnt/client_share
 sudo touch /mnt/client_share/client_nfs_file.txt
 ```
 
-- NodeV01
+- **NodeV01**
 ```console
 ls -l /mnt/nfs_shares
 ```
