@@ -12,45 +12,45 @@ sudo dnf install nfs-utils -y
 Quando a instalação estiver concluída, inicie e habilite o serviço nfs-server para que ele seja feito automaticamente durante as reinicializações. Execute os seguintes comandos:
 
 ```console
-$ sudo systemctl start nfs-server.service
-$ sudo systemctl enable nfs-server.service
+sudo systemctl start nfs-server.service
+sudo systemctl enable nfs-server.service
 ```
 
 Para confirmar se o serviço NFS está em execução, execute:
 
 ```console
-$ sudo systemctl status nfs-server.service
+sudo systemctl status nfs-server.service
 ```
 
 Você pode verificar a versão do protocolo nfs que está executando, executando o comando:
 
 ```console
-$ rpcinfo -p | grep nfs
+rpcinfo -p | grep nfs
 ```
 
 ## Segunda etapa: Criação e exportação de compartilhamento NFS
 Nesta etapa, vamos criar um sistema de arquivos que será compartilhado do servidor para os sistemas do cliente. Neste guia, criaremos um diretório em /mnt/nfs_share como mostrado abaixo:
 
 ```console
-$ sudo mkdir -p /mnt/nfs_shares
+sudo mkdir -p /mnt/nfs_shares
 ```
 
 Para evitar restrições de arquivo no diretório de compartilhamento NFS, é aconselhável configurar a propriedade do diretório conforme mostrado. Isso permite a criação de arquivos dos sistemas cliente sem encontrar quaisquer problemas de permissão.
 
 ```console
-$ sudo chown -R nobody: /mnt/nfs_shares
+sudo chown -R nobody: /mnt/nfs_shares
 ```
 
 Além disso, você pode decidir ajustar as permissões do diretório de acordo com sua preferência. Por exemplo, neste guia, iremos atribuir todas as permissões (ler, escrever e executar) para a pasta de compartilhamento NFS
 
 ```console
-$ sudo chmod -R 777 /mnt/nfs_shares
+sudo chmod -R 777 /mnt/nfs_shares
 ```
 
 Para que as alterações entrem em vigor, reinicie o daemon NFS:
 
 ```console
-$ sudo systemctl restart nfs-utils.service
+sudo systemctl restart nfs-utils.service
 ```
 
 Para exportar o compartilhamento NFS para que os sistemas cliente possam acessá-lo, precisamos editar o arquivo /etc/exports. </br>
@@ -70,7 +70,7 @@ Vejamos o significado dos parâmetros usados:
 Para exportar a pasta criada acima, use o comando exportfs:
 
 ```console
-$ sudo exportfs -arv
+sudo exportfs -arv
 ```
 
 A opção -a implica que todos os diretórios serão exportados, -r significa reexportar todos os diretórios e, por fim, o sinalizador -v exibe a saída detalhada. </br>
@@ -78,7 +78,7 @@ A opção -a implica que todos os diretórios serão exportados, -r significa re
 Apenas para ter certeza sobre a lista de exportação, você pode exibir a lista de exportação usando o comando:
 
 ```console
-$ sudo exportfs -s
+sudo exportfs -s
 ```
 
 # NodeV02
@@ -86,13 +86,13 @@ $ sudo exportfs -s
 ## Primeira etapa: Instale os pacotes NFS necessários: 
 
 ```console
-$ sudo dnf install nfs-utils nfs4-acl-tools -y
+sudo dnf install nfs-utils nfs4-acl-tools -y
 ```
 
 Para exibir os compartilhamentos NFS montados no servidor, use o comando showmount:
 
 ```console
-$ showmount -e 192.168.2.102
+showmount -e 192.168.2.102
 ```
 
 ## Segunda etapa: Montar o compartilhamento NFS remoto localizado no servidor
@@ -100,21 +100,21 @@ $ showmount -e 192.168.2.102
 Em seguida, precisamos montar o diretório de compartilhamento NFS remoto no sistema cliente local. Mas primeiro, vamos criar um diretório para montar o compartilhamento NFS.
 
 ```console
-$ sudo mkdir p /mnt/client_share
+sudo mkdir p /mnt/client_share
 ```
 Para montar o compartilhamento NFS, execute o comando abaixo. Lembre-se de que é nescessário passar o endereço IP do servidor NFS.
 
 ```console
-$ sudo mount -t nfs SERVER-IP:/mnt/nfs_shares /mnt/client_share
+sudo mount -t nfs SERVER-IP:/mnt/nfs_shares /mnt/client_share
 ```
 ou
 ```console
-$ sudo mount -t nfs4 SERVER-IP:/mnt/nfs_shares/ /mnt/client_share
+sudo mount -t nfs4 SERVER-IP:/mnt/nfs_shares/ /mnt/client_share
 ```
 
 Você pode verificar se o compartilhamento NFS remoto foi montado executando:
 ```console
-$ sudo mount | grep -i nfs
+sudo mount | grep -i nfs
 ```
 
 Para tornar o compartilhamento de montagem persistente após uma reinicialização, você precisa editar o arquivo /etc/fstab e anexar a entrada abaixo.
@@ -143,7 +143,7 @@ Neste ponto, concluímos todas as configurações. No entanto, precisamos testar
 
 NodeV01
 ```console
-$ sudo touch /mnt/nfs_shares/server_nfs_file.txt
+sudo touch /mnt/nfs_shares/server_nfs_file.txt
 ```
 
 NodeV02
@@ -151,10 +151,10 @@ NodeV02
 $ ls -l /mnt/client_share
 ```
 ```console
-$ sudo touch /mnt/client_share/client_nfs_file.txt
+sudo touch /mnt/client_share/client_nfs_file.txt
 ```
 
 NodeV01
 ```console
-$ ls -l /mnt/nfs_shares
+ls -l /mnt/nfs_shares
 ```
