@@ -148,7 +148,7 @@ sudo touch /mnt/nfs_shares/server_nfs_file.txt
 
 NodeV02
 ```console
-$ ls -l /mnt/client_share
+ls -l /mnt/client_share
 ```
 ```console
 sudo touch /mnt/client_share/client_nfs_file.txt
