@@ -1,5 +1,5 @@
 # Configure-NFS-CentOS8
-NFS é um protocolo cliente / servidor de plataforma cruzada que permite que máquinas clientes acessem arquivos compartilhados pelo servidor NFS em uma rede. Os sistemas cliente podem montar localmente os sistemas de arquivos a partir do servidor NFS e acessar arquivos e diretórios como se estivessem montados localmente. Neste guia, vamos orientá-lo na instalação e configuração do NFS Server no CentOS 8 / RHEL 8. Nessa instalação vamos utilizar duas maquinas, chamaremos ela de NodeV01 e NodeV02, a V01 será nossa maquina provedora do serviço NFS, a V02 será a maquina CLient 
+NFS é um protocolo cliente / servidor de plataforma cruzada que permite que máquinas clientes acessem arquivos compartilhados pelo servidor NFS em uma rede. Os sistemas cliente podem montar localmente os sistemas de arquivos a partir do servidor NFS e acessar arquivos e diretórios como se estivessem montados localmente. Neste guia, vamos orientá-lo na instalação e configuração do NFS Server no CentOS 8 / RHEL 8. Nessa instalação vamos utilizar duas maquinas, chamaremos ela de NodeV01 e NodeV02, a V01 será nossa maquina provedora do serviço NFS, a V02 será a maquina Client 
 
 # NodeV01
 
