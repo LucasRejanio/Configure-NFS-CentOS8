@@ -57,8 +57,8 @@ Para exportar o compartilhamento NFS para que os sistemas cliente possam acessá
 
 Exemplos: 
 ```
-/mnt/nfs_shares CLIENT-IP:(rw, sync, no_all_squash, root_squash)
-/mnt/nfs_shares *(rw, sync, no_all_squash, root_squash)
+/mnt/nfs_shares CLIENT-IP:(rw,sync,no_all_squash,root_squash)
+/mnt/nfs_shares *(rw,sync,no_all_squash,root_squash)
 ```
 Vejamos o significado dos parâmetros usados:
 
@@ -122,7 +122,7 @@ Para tornar o compartilhamento de montagem persistente após uma reinicializaç�
 ```
 SERVER-IP:/mnt/nfs_shares/ /mnt/client_share nfs defaults 0 0
 ```
-```conf
+```php
 #
 # /etc/fstab
 # Created by anaconda on Thu Apr 23 05:12:32 2020
